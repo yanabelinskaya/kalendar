@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="pr6.Calendar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:pr6"
+             mc:Ignorable="d" 
+             Height="60" Width="60">
+    <Grid Background="#FFEDEAEA" Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="Data" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Day}" Grid.Row="0" />
+        <Button  Grid.Row="1" Click="Button_Click" x:Name="calendar">
+            <Image Grid.Row="1" Source="images/vopros.jpg" Stretch="Fill">
+                <Image.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Открыть этот день"/>
+                        <MenuItem Header="Удалить все в этом дне"/>
+                    </ContextMenu>
+                </Image.ContextMenu>
+            </Image>
+        </Button>
+
+    </Grid>
+</UserControl>
