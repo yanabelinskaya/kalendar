@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:pr6"
         mc:Ignorable="d"
         Title="Календарь мытья головы" Height="550" Width="320">
+    <Window.Resources>
+        <SolidColorBrush x:Key="PinkBrush" Color="#FFC0CB"/>
+        <SolidColorBrush x:Key="PurpleBrush" Color="#800080"/>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -16,13 +21,27 @@
             <RowDefinition />
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center"  Click="Button_Click1">
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click1">
             <Image Source="images/1.jpg" Stretch="Fill"/>
         </Button>
+
         <Button HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click2" Grid.Column="2" x:Name="Suda">
             <Image Source="images/11.jpg" Stretch="Fill" x:Name="img"/>
         </Button>
-        <Button x:Name="Save" Click="SaveButton_Click"  Grid.Column="2" Visibility="Collapsed" Content="Сохранить" BorderBrush="White" Foreground="Black" Background="#FFEDE3E1" FontSize="14" FontStyle="Italic"/>
+
+        <Button x:Name="Save" Click="SaveButton_Click"  Grid.Column="2" Visibility="Collapsed" Content="Сохранить" BorderBrush="White" Foreground="Black" Background="#FFEDE3E1" FontSize="14" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" From="100" To="50" Duration="0:0:1" AutoReverse="True"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
         <TextBlock x:Name="daytxt" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Bahnschrift" FontSize="16"/>
         <WrapPanel Grid.Row="1" Grid.ColumnSpan="3" x:Name="calendarik">
             <local:Calendar/>

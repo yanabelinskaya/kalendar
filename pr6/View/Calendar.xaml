@@ -11,17 +11,49 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="Data" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Day}" Grid.Row="0" />
-        <Button  Grid.Row="1" Click="Button_Click" x:Name="calendar">
-            <Image Grid.Row="1" Source="images/vopros.jpg" Stretch="Fill">
-                <Image.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Открыть этот день"/>
-                        <MenuItem Header="Удалить все в этом дне"/>
-                    </ContextMenu>
-                </Image.ContextMenu>
-            </Image>
+        <!-- Изменение цвета текста при наведении мышкой -->
+        <TextBlock x:Name="Data" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Day}" Grid.Row="0" Width="50" TextAlignment="Center">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="HotPink"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Button Grid.Row="1" Click="Button_Click" x:Name="calendar">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Image Source="images/vopros.jpg" Stretch="Fill">
+                            <Image.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Открыть этот день"/>
+                                    <MenuItem Header="Удалить все в этом дне"/>
+                                </ContextMenu>
+                            </Image.ContextMenu>
+                        </Image>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="calendar" Storyboard.TargetProperty="Opacity" To="0.5" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="calendar" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
         </Button>
-
     </Grid>
 </UserControl>
