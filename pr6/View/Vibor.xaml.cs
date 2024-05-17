@@ -15,11 +15,9 @@ using System.Windows.Shapes;
 
 namespace pr6
 {
-    /// <summary>
-    /// Логика взаимодействия для Vibor.xaml
-    /// </summary>
     public partial class Vibor : Page
     {
+        private string selectedImageSource = "";
         public Vibor()
         {
             InitializeComponent();

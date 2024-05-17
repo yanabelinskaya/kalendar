@@ -20,6 +20,7 @@ namespace pr6
     public partial class MainWindow : Window
     {
         DateTime dateTime = DateTime.Now;
+        private string selectedImageSource = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -61,18 +62,12 @@ namespace pr6
         {
             if (PageFrame.Content != null && PageFrame.Content.GetType() == typeof(Vibor))
             {
-                // Скрыть кнопку "Сюда"
                 Suda.Visibility = Visibility.Collapsed;
-
-                // Показать кнопку "Сохранить"
                 Save.Visibility = Visibility.Visible;
             }
             else
             {
-                // Показать кнопку "Сюда"
                 Suda.Visibility = Visibility.Visible;
-
-                // Скрыть кнопку "Сохранить"
                 Save.Visibility = Visibility.Collapsed;
             }
         }
